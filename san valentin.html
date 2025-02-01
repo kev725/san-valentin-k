@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Yoselyn 💖</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .mensaje {
+            font-size: 1.5em;
+            color: #d63384;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .corazon {
+            color: red;
+            font-size: 3em;
+            animation: latido 1s infinite;
+        }
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        .boton {
+            background-color: #ff4d6d;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: none;
+        }
+        .boton:hover {
+            background-color: #c9184a;
+        }
+        .musica {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #c9184a;
+            cursor: pointer;
+        }
+        .musica span {
+            animation: nota 1s infinite alternate;
+        }
+        @keyframes nota {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body onclick="iniciarMusica()">
+
+    <div class="mensaje" id="mensaje1">Holaaa, de verdad sin saber cómo programar intenté hacer esto para ti...</div>
+    <div class="mensaje" id="mensaje2">Yoselyn, de verdad eres lo más precioso de mi mundo y me encantas.</div>
+    <div class="mensaje" id="mensaje3">Eres la mujer que yo quiero en mi vida porque contigo me siento a gusto y puedo ser yo.</div>
+    <div class="mensaje" id="mensaje4">Hice esto porque ya sabes cómo soy. Quiero pedirte algo y la verdad me da miedo, pero aquí voy...</div>
+    <div class="mensaje" id="mensaje5">💖 Yoselyn, ¿quieres ser mi San Valentín? 💖</div>
+    <p class="corazon">❤ ❤ ❤</p>
+    <button class="boton" id="boton" onclick="alert('¡Sabía que dirías que sí! 💘')">Sí, quiero 💕</button>
+
+    <div class="musica" onclick="toggleMusic()">
+        🎵 <span>Reproducir/Pausar Música</span> 🎵
+    </div>
+    <audio id="musica" autoplay loop>
+        <source src="just-the-way-you-are.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function mostrarMensaje(id, tiempo) {
+            setTimeout(() => {
+                document.getElementById(id).style.opacity = 1;
+            }, tiempo);
+        }
+
+        function toggleMusic() {
+            var audio = document.getElementById("musica");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function iniciarMusica() {
+            var audio = document.getElementById("musica");
+            audio.play();
+            document.body.onclick = null;
+        }
+
+        // Mostrar mensajes con intervalos de tiempo
+        mostrarMensaje("mensaje1", 1000);
+        mostrarMensaje("mensaje2", 4000);
+        mostrarMensaje("mensaje3", 8000);
+        mostrarMensaje("mensaje4", 12000);
+        mostrarMensaje("mensaje5", 16000);
+        
+        // Mostrar botón después del último mensaje
+        setTimeout(() => {
+            document.getElementById("boton").style.display = "inline-block";
+        }, 18000);
+    </script>
+
+</body>
+</html>
